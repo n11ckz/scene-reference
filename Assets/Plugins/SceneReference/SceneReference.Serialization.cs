@@ -25,8 +25,8 @@ namespace SceneReference
 
         private void SetInvalidValues()
         {
-            Name = "Undefined Scene Asset";
-            BuildIndex = -1;
+            Name = Constants.UndefinedSceneAsset;
+            BuildIndex = Constants.InvalidBuildIndex;
         }
 
         private void SetSceneBuildIndex()

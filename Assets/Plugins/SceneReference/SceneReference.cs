@@ -9,7 +9,7 @@ namespace SceneReference
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public int BuildIndex { get; private set; }
 
-        public bool IsAddedInBuild => BuildIndex != -1;
+        public bool IsAddedInBuild => BuildIndex != Constants.InvalidBuildIndex;
 
         public SceneReference(string name, int buildIndex)
         {
