@@ -1,14 +1,16 @@
 #if UNITY_EDITOR
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SceneReference
+namespace n11ckz.SceneReference
 {
     public partial class SceneReference : ISerializationCallbackReceiver
     {
         [SerializeField] private SceneAsset _sceneAsset;
 
+        [Obsolete("This method will not be included in build", true)]
         public void OnBeforeSerialize()
         {
             if (_sceneAsset == null)
@@ -21,6 +23,7 @@ namespace SceneReference
             SetSceneBuildIndex();
         }
 
+        [Obsolete("This method will not be included in build", true)]
         public void OnAfterDeserialize() { }
 
         private void SetInvalidValues()

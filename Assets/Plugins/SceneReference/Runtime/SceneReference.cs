@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace SceneReference
+namespace n11ckz.SceneReference
 {
     [Serializable]
     public partial class SceneReference

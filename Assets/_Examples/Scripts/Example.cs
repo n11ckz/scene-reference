@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SceneReference.Examples
+namespace n11ckz.SceneReference.Examples
 {
     public class Example : MonoBehaviour
     {

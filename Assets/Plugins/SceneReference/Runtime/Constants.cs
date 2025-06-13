@@ -1,4 +1,4 @@
-namespace SceneReference
+namespace n11ckz.SceneReference
 {
     public static class Constants
     {
