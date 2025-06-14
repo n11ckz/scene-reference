@@ -6,7 +6,6 @@ namespace n11ckz.SceneReference.Editor
     [CustomPropertyDrawer(typeof(SceneReference))]
     public class SceneReferenceDrawer : PropertyDrawer
     {
-        private readonly Vector2Int _foldoutStyleOffset = new Vector2Int(2, 0);
         private readonly float _heightOffset = EditorGUIUtility.singleLineHeight + Constants.GapBetweenProperties;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -35,7 +34,7 @@ namespace n11ckz.SceneReference.Editor
         {
             Rect foldoutRect = new Rect(position.x, position.y,
                 position.width, EditorGUIUtility.singleLineHeight);
-            GUIStyle foldoutStyle = GetFoldoutStyle();
+            GUIStyle foldoutStyle = EditorElementsUtility.GetFoldoutStyle();
             property.isExpanded = EditorGUI.Foldout(foldoutRect, property.isExpanded,content, true, foldoutStyle);
         }
 
@@ -63,15 +62,6 @@ namespace n11ckz.SceneReference.Editor
             GUI.enabled = true;
 
             EditorGUI.indentLevel--;
-        }
-
-        private GUIStyle GetFoldoutStyle()
-        {
-            GUIStyle style = new GUIStyle(EditorStyles.foldout);
-            style.margin.left -= _foldoutStyleOffset.x;
-            style.contentOffset += _foldoutStyleOffset;
-
-            return style;
         }
     }
 }
