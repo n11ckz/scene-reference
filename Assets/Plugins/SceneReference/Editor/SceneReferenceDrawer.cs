@@ -25,7 +25,7 @@ namespace n11ckz.SceneReference.Editor
             float height = EditorGUIUtility.singleLineHeight;
 
             if (property.isExpanded == true)
-                height += _heightOffset * 2;
+                height += _heightOffset * Constants.NestedPropertiesCount;
             
             return height;
         }

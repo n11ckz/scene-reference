@@ -28,8 +28,8 @@ namespace n11ckz.SceneReference
 
         private void SetInvalidValues()
         {
-            Name = Constants.UndefinedSceneAsset;
-            BuildIndex = Constants.InvalidBuildIndex;
+            Name = Constants.UndefinedSceneName;
+            BuildIndex = Constants.InvalidSceneBuildIndex;
         }
 
         private void SetSceneBuildIndex()
