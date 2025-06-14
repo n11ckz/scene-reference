@@ -4,5 +4,8 @@ namespace n11ckz.SceneReference
     {
         public const string UndefinedSceneAsset = "Undefined Scene Asset";
         public const int InvalidBuildIndex = -1;
+
+        public const int GapBetweenProperties = 4;
+        public const int EditorIndentOffset = 12;
     }
 }
