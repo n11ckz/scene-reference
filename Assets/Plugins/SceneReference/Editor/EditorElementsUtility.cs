@@ -18,5 +18,13 @@ namespace n11ckz.SceneReference.Editor
 
             return foldoutStyle;
         }
+
+        public static GUIContent GetSettingsButtonContent()
+        {
+            GUIContent content = EditorGUIUtility.IconContent(Constants.SettingsIconName);
+            content.tooltip = "Open Build Settings";
+
+            return content;
+        }
     }
 }

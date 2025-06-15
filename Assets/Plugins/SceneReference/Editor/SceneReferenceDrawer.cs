@@ -26,7 +26,7 @@ namespace n11ckz.SceneReference.Editor
 
             if (property.isExpanded == true)
                 height += _heightOffset * Constants.NestedPropertiesCount;
-            
+
             return height;
         }
 
@@ -35,7 +35,7 @@ namespace n11ckz.SceneReference.Editor
             Rect foldoutRect = new Rect(position.x, position.y,
                 position.width, EditorGUIUtility.singleLineHeight);
             GUIStyle foldoutStyle = EditorElementsUtility.GetFoldoutStyle();
-            property.isExpanded = EditorGUI.Foldout(foldoutRect, property.isExpanded,content, true, foldoutStyle);
+            property.isExpanded = EditorGUI.Foldout(foldoutRect, property.isExpanded, content, true, foldoutStyle);
         }
 
         private void DrawNestedProperties(Rect position, SerializedProperty property)
@@ -43,14 +43,16 @@ namespace n11ckz.SceneReference.Editor
             EditorGUI.indentLevel++;
 
             Rect sceneAssetRect = new Rect(position.x, position.y + _heightOffset,
-                position.width, EditorGUIUtility.singleLineHeight);
+                position.width - _heightOffset, EditorGUIUtility.singleLineHeight);
             SerializedProperty sceneAssetProperty = property.FindPropertyRelative("_sceneAsset");
             EditorGUI.PropertyField(sceneAssetRect, sceneAssetProperty);
+
+            DrawSettingsButton(sceneAssetRect);
 
             GUI.enabled = false;
 
             Rect nameRect = new Rect(sceneAssetRect.x, sceneAssetRect.y + _heightOffset,
-                (sceneAssetRect.width + Constants.EditorIndentOffset) * 0.5f, EditorGUIUtility.singleLineHeight);
+                (position.width + Constants.EditorIndentOffset) * 0.5f, EditorGUIUtility.singleLineHeight);
             SerializedProperty nameProperty = property.FindPropertyRelative("<Name>k__BackingField");
             EditorGUI.PropertyField(nameRect, nameProperty, GUIContent.none);
 
@@ -62,6 +64,18 @@ namespace n11ckz.SceneReference.Editor
             GUI.enabled = true;
 
             EditorGUI.indentLevel--;
+        }
+
+        private void DrawSettingsButton(Rect position)
+        {
+            Rect settingsButtonRect = new Rect(position.x + position.width + Constants.GapBetweenProperties, position.y,
+                EditorGUIUtility.singleLineHeight, EditorGUIUtility.singleLineHeight);
+            GUIContent settingsButtonContent = EditorElementsUtility.GetSettingsButtonContent();
+
+            if (GUI.Button(settingsButtonRect, settingsButtonContent, EditorStyles.iconButton) == false)
+                return;
+
+            EditorWindow.GetWindow<BuildPlayerWindow>();
         }
     }
 }
