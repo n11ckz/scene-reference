@@ -4,7 +4,7 @@ using UnityEngine;
 namespace n11ckz.SceneReference.Editor
 {
     [CustomPropertyDrawer(typeof(SceneReference))]
-    public class SceneReferenceDrawer : PropertyDrawer
+    internal class SceneReferenceDrawer : PropertyDrawer
     {
         private readonly float _heightOffset = EditorGUIUtility.singleLineHeight + Constants.GapBetweenProperties;
 
@@ -53,12 +53,14 @@ namespace n11ckz.SceneReference.Editor
 
             Rect nameRect = new Rect(sceneAssetRect.x, sceneAssetRect.y + _heightOffset,
                 (position.width + Constants.EditorIndentOffset) * 0.5f, EditorGUIUtility.singleLineHeight);
-            SerializedProperty nameProperty = property.FindPropertyRelative("<Name>k__BackingField");
+            string namePropertyName = $"<{nameof(SceneReference.Name)}>k__BackingField";
+            SerializedProperty nameProperty = property.FindPropertyRelative(namePropertyName);
             EditorGUI.PropertyField(nameRect, nameProperty, GUIContent.none);
 
             Rect buildIndexRect = new Rect(nameRect.x + nameRect.width - Constants.EditorIndentOffset, nameRect.y,
                 nameRect.width, EditorGUIUtility.singleLineHeight);
-            SerializedProperty buildIndexProperty = property.FindPropertyRelative("<BuildIndex>k__BackingField");
+            string buildIndexPropertyName = $"<{nameof(SceneReference.BuildIndex)}>k__BackingField";
+            SerializedProperty buildIndexProperty = property.FindPropertyRelative(buildIndexPropertyName);
             EditorGUI.PropertyField(buildIndexRect, buildIndexProperty, GUIContent.none);
 
             GUI.enabled = true;
@@ -68,7 +70,7 @@ namespace n11ckz.SceneReference.Editor
 
         private void DrawSettingsButton(Rect position)
         {
-            Rect settingsButtonRect = new Rect(position.x + position.width + Constants.GapBetweenProperties, position.y,
+            Rect settingsButtonRect = new Rect(position.x + position.width + Constants.GapBetweenProperties, position.y + 1,
                 EditorGUIUtility.singleLineHeight, EditorGUIUtility.singleLineHeight);
             GUIContent settingsButtonContent = EditorElementsUtility.GetSettingsButtonContent();
 

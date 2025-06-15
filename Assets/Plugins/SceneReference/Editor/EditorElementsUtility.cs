@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace n11ckz.SceneReference.Editor
 {
-    public static class EditorElementsUtility
+    internal static class EditorElementsUtility
     {
         private static readonly Vector2Int _foldoutStyleOffset = new Vector2Int(2, 0);
 
