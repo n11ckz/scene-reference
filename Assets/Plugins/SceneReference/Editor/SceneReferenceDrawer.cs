@@ -4,7 +4,7 @@ using UnityEngine;
 namespace n11ckz.SceneReference.Editor
 {
     [CustomPropertyDrawer(typeof(SceneReference))]
-    internal class SceneReferenceDrawer : PropertyDrawer
+    public class SceneReferenceDrawer : PropertyDrawer
     {
         private readonly float _heightOffset = EditorGUIUtility.singleLineHeight + Constants.GapBetweenProperties;
 
