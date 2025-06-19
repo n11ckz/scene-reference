@@ -17,3 +17,8 @@
 ```
 https://github.com/n11ckz/scene-reference.git?path=Assets/Plugins/SceneReference
 ```
+
+#### Install manually (using .unitypackage)
+
+1. Open [Releases](https://github.com/n11ckz/scene-reference/releases) and download `.unitypackage` file.
+2. Drag it to Unity and click `Import` button.
