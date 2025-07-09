@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="root-element" style="flex-grow: 0;">
+        <ui:Foldout text="Foldout" name="root-foldout" value="true" style="margin-left: 0;">
+            <uie:ObjectField label="Scene Asset" allow-scene-objects="false" type="UnityEditor.SceneAsset, UnityEditor.CoreModule" binding-path="_sceneAsset" name="scene-asset-field" class="unity-base-field__aligned" />
+            <ui:Foldout text="Data" name="data-foldout" value="true" style="padding-left: 0; margin-left: 0; display: flex; visibility: visible;">
+                <ui:TextField label="Name" placeholder-text="Undefined Scene Asset" name="name-field" enabled="false" binding-path="&lt;Name&gt;k__BackingField" class="unity-base-field__aligned" />
+                <ui:IntegerField label="Build Index" value="-1" name="build-index-field" enabled="false" binding-path="&lt;BuildIndex&gt;k__BackingField" class="unity-base-field__aligned" />
+            </ui:Foldout>
+        </ui:Foldout>
+    </ui:VisualElement>
+</ui:UXML>

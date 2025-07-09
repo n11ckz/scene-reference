@@ -293,9 +293,9 @@ MonoBehaviour:
   - <Name>k__BackingField: Undefined Scene Asset
     <BuildIndex>k__BackingField: -1
     _sceneAsset: {fileID: 0}
-  - <Name>k__BackingField: Undefined Scene Asset
-    <BuildIndex>k__BackingField: -1
-    _sceneAsset: {fileID: 0}
+  - <Name>k__BackingField: BasicSampleScene
+    <BuildIndex>k__BackingField: 0
+    _sceneAsset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
 --- !u!4 &391969858
 Transform:
   m_ObjectHideFlags: 0
