@@ -14,6 +14,8 @@ namespace n11ckz.SceneReference.Editor
 
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
+            TryLoadVisualTreeAsset();
+
             VisualElement root = _visualTreeAsset.CloneTree();
 
             List<Foldout> foldouts = root.Query<Foldout>().ToList();
@@ -25,10 +27,12 @@ namespace n11ckz.SceneReference.Editor
             return root;
         }
 
-        private void ChangeRootFoldoutDisplayName(Foldout foldout, SerializedProperty property)
+        private void TryLoadVisualTreeAsset()
         {
-            foldout.TrackPropertyValue(property, (x) => foldout.text = x.displayName);
-            foldout.text = property.displayName;
+            if (_visualTreeAsset != null)
+                return;
+
+            _visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(Paths.Tree);
         }
 
         private void RegisterFoldoutValueStates(IEnumerable<Foldout> foldouts, SerializedProperty property)
@@ -48,6 +52,12 @@ namespace n11ckz.SceneReference.Editor
                     EditorPrefs.SetBool(key, x.newValue);
                 });
             }
+        }
+
+        private void ChangeRootFoldoutDisplayName(Foldout foldout, SerializedProperty property)
+        {
+            foldout.TrackPropertyValue(property, (x) => foldout.text = x.displayName);
+            foldout.text = property.displayName;
         }
     }
 }
