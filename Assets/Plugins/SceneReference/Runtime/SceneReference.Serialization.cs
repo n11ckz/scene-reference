@@ -11,8 +11,17 @@ namespace n11ckz.SceneReference
         [SerializeField] private SceneAsset _sceneAsset;
 
         [Obsolete("This method will not be included in build", true)]
-        public void OnBeforeSerialize()
+        public void OnBeforeSerialize() =>
+            SetValues();
+
+        [Obsolete("This method will not be included in build", true)]
+        public void OnAfterDeserialize() =>
+            EditorApplication.update += SetValues;
+
+        private void SetValues()
         {
+            EditorApplication.update -= SetValues;
+
             if (_sceneAsset == null)
             {
                 SetInvalidValues();
@@ -20,11 +29,8 @@ namespace n11ckz.SceneReference
             }
 
             Name = _sceneAsset.name;
-            SetSceneBuildIndex();
+            BuildIndex = GetSceneBuildIndex();
         }
-
-        [Obsolete("This method will not be included in build", true)]
-        public void OnAfterDeserialize() { }
 
         private void SetInvalidValues()
         {
@@ -32,10 +38,10 @@ namespace n11ckz.SceneReference
             BuildIndex = Constants.InvalidSceneBuildIndex;
         }
 
-        private void SetSceneBuildIndex()
+        private int GetSceneBuildIndex()
         {
             string sceneAssetPath = AssetDatabase.GetAssetOrScenePath(_sceneAsset);
-            BuildIndex = SceneUtility.GetBuildIndexByScenePath(sceneAssetPath);
+            return SceneUtility.GetBuildIndexByScenePath(sceneAssetPath);
         }
     }
 }
